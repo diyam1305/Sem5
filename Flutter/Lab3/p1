@@ -1,0 +1,42 @@
+import 'dart:io';
+class Candidate
+{
+  int? Candidate_ID;
+  String? Candidate_Name;
+  int? Candidate_Age;
+  double? Candidate_Weight;
+  double? Candidate_Height;
+
+  void GetCandidateDetails()
+  {
+    print("Enter Candidate-ID:");
+    Candidate_ID = int.parse(stdin.readLineSync()!);
+
+    print("Enter Candidate-Name");
+    Candidate_Name = stdin.readLineSync()!;
+
+    print("Enter Candidate-Age:");
+    Candidate_Age = int.parse(stdin.readLineSync()!);
+
+    print("Enter Candidate-Weight:");
+    Candidate_Weight = double.parse(stdin.readLineSync()!);
+
+    print("Enter Candidate-Height:");
+    Candidate_Height = double.parse(stdin.readLineSync()!);
+  }
+  void DisplayCandidateDetails()
+  {
+    int i = 0;
+    print("Candidate-ID:${i + 1}");
+    print("Candidate-Name:$Candidate_Name");
+    print("Candidate-Age:$Candidate_Age");
+    print("Candidate-Weight:$Candidate_Weight");
+    print("Candidate-Height:$Candidate_Height");
+  }
+}
+void main()
+{
+  Candidate c = Candidate();
+  c.GetCandidateDetails();
+  c.DisplayCandidateDetails();
+}
