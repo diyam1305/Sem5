@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+
+class First extends StatelessWidget {
+  const First({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Text('Hello World',
+          style: TextStyle(color: Colors.pinkAccent,
+          fontSize: 50,
+            fontWeight: FontWeight.w500,
+          backgroundColor: Colors.yellowAccent,),
+          ),
+    );
+  }
+}
