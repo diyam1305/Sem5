@@ -1,0 +1,58 @@
+CREATE DATABASE CRUD_OP
+
+CREATE TABLE Student
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	EnrollmentNo INT NOT NULL,
+	StudentName NVARCHAR(100) NOT NULL,
+	Semester INT NOT NULL,
+	SPI DECIMAL(4,2) NOT NULL,/*total 4 digits and 2 digits after decimal*/
+	CPI DECIMAL(4,2) NOT NULL
+)
+ 
+SELECT * FROM Student
+
+INSERT INTO Student (EnrollmentNo, StudentName, Semester, SPI, CPI) VALUES
+(101, 'Diya', 5, 9.8, 8.5),
+(102, 'Jinal', 5, 5.5, 5.8), 
+(103, 'Rutvi', 5, 8.5, 5.8),
+(104, 'Jinkal', 5, 5.5, 5.8),
+(105, 'Eva', 5, 5.5, 5.8)
+
+
+CREATE PROCEDURE Student_CRUD
+(@STU_ID INT = 0, @Stu_EnrollmentNo INT = 0, @Stu_StudentName NVARCHAR(50) = null, @Stu_Semester INT = 0, @Stu_SPI DECIMAL = 0, @Stu_CPI DECIMAL = 0,  @Event NVARCHAR(50) = null)
+AS
+BEGIN
+	IF (@Event = 'Select') 
+	BEGIN 
+		SELECT * FROM Student ORDER BY ID ASC;
+	END
+
+	ELSE IF(@Event = 'SelectbyID') 
+	BEGIN 
+		SELECT EnrollmentNo, StudentName,Semester,SPI, CPI  FROM Student WHERE ID = @STU_ID  
+	END
+
+	ELSE IF (@Event = 'Add') 
+	BEGIN 
+		INSERT INTO Student (EnrollmentNo, StudentName, Semester, SPI, CPI) 
+		VALUES (@Stu_EnrollmentNo, @Stu_StudentName, @Stu_Semester, @Stu_SPI, @Stu_CPI); 
+	END
+
+	ELSE IF (@Event = 'Update') 
+	BEGIN 
+		UPDATE Student
+		SET EnrollmentNo = @Stu_EnrollmentNo, 
+		StudentName = @Stu_StudentName,
+		Semester = @Stu_Semester, 
+		SPI = @Stu_SPI, 
+		CPI = @Stu_CPI 
+		WHERE ID = @STU_ID; 
+	END
+
+	ELSE 
+	BEGIN 
+		DELETE FROM Student WHERE ID = @STU_ID; 
+	END 
+END
