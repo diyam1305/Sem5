@@ -1,0 +1,73 @@
+CREATE TABLE Faculty
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	FirstName NVARCHAR(100) NOT NULL,
+	LastName NVARCHAR(100) NOT NULL,
+	ContactNo BIGINT NOT NULL,
+	EmailID NVARCHAR(50) NOT NULL,
+)
+ 
+SELECT * FROM Faculty
+
+INSERT INTO Faculty(FirstName, LastName, ContactNo, EmailID)
+VALUES ('Diya', 'Maru', 1234567890, 'diya@gmail.com'),
+	   ('Jinal', 'Maru', 0987654321, 'jinal@gmail.com'),
+	   ('Rutvi', 'Kagda', 2345678901, 'rutvi@gmail.com'),
+	   ('Eva', 'Mehta', 3456789012, 'eva@gmail.com'),
+	   ('Jinkal', 'Makwana', 4567890123, 'jinkal@gmail.com')
+
+
+CREATE PROCEDURE Faculty_CRUD_OP
+(@Fac_ID INT = 0, 
+@Fac_FirstName NVARCHAR(100) = NULL,
+@Fac_LastName NVARCHAR(50) = NULL, 
+@Fac_ContactNo BIGINT = 0, 
+@Fac_EmailID NVARCHAR(100) = NULL, 
+@Event NVARCHAR(50) = NULL)
+AS
+BEGIN
+    IF (@Event = 'Select') 
+    BEGIN 
+        SELECT 
+            ID AS Fac_ID, 
+            FirstName AS Fac_FirstName, 
+            LastName AS Fac_LastName, 
+            ContactNo AS Fac_ContactNo, 
+            EmailID AS Fac_EmailID
+        FROM Faculty
+        ORDER BY ID ASC;
+    END
+
+    ELSE IF (@Event = 'SelectbyID') 
+    BEGIN 
+        SELECT 
+            ID AS Fac_ID,
+            FirstName AS Fac_FirstName, 
+            LastName AS Fac_LastName, 
+            ContactNo AS Fac_ContactNo, 
+            EmailID AS Fac_EmailID  
+        FROM Faculty 
+        WHERE ID = @Fac_ID;  
+    END
+
+    ELSE IF (@Event = 'Add') 
+    BEGIN 
+        INSERT INTO Faculty (FirstName, LastName, ContactNo, EmailID) 
+        VALUES (@Fac_FirstName, @Fac_LastName, @Fac_ContactNo, @Fac_EmailID); 
+    END
+
+    ELSE IF (@Event = 'Update') 
+    BEGIN 
+        UPDATE Faculty 
+        SET FirstName = @Fac_FirstName, 
+            LastName = @Fac_LastName,
+            ContactNo = @Fac_ContactNo, 
+            EmailID = @Fac_EmailID
+        WHERE ID = @Fac_ID; 
+    END
+
+    ELSE IF (@Event = 'Delete')
+    BEGIN 
+        DELETE FROM Faculty WHERE ID = @Fac_ID;   
+    END 
+END
