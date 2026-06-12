@@ -1,0 +1,128 @@
+﻿<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Student.master.cs" Inherits="lab_8.Student" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <style>
+        h1{
+            text-align:center;
+            font-size:30px;
+            color:blueviolet;
+            background-color:antiquewhite;
+            margin:0px;
+        }
+        h3{
+            text-align:center;
+            font-size:15px;
+            color:blueviolet;
+            background-color:antiquewhite;
+            bottom:0px;
+            position:absolute;
+            width:100%;
+        }
+        .divNavBar
+        {
+            text-align: center;
+            background-color:azure;
+            
+        }
+        a{
+            text-decoration: none;
+            padding:10px;
+            color:blue;
+        }
+        p
+        {
+            font-size:30px;
+            color:red;
+            text-align:center;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="divHeader">
+                <h1>Student Portal</h1>
+            </div>
+            <div class="divNavBar">
+                <asp:HyperLink runat="server" Text="Admin" NavigateUrl="~/Admin.master"></asp:HyperLink>
+                <asp:HyperLink runat="server" Text="User" NavigateUrl="~/User.aspx"></asp:HyperLink>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <div class="divFooter">
+                <h3>&copy; 2025 Student Portal</h3>
+            </div>
+        </div>
+    </form>
+</body>
+</html>--%>
+
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Student.master.cs" Inherits="lab_8.Student" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Student Portal</title>
+    <style>
+        h1{
+            text-align:center;     
+            font-size:30px;
+            color:blueviolet;
+            background-color:antiquewhite;
+            margin:0px;
+        }
+        h3{
+            text-align:center;
+            font-size:15px;
+            color:blueviolet;
+            background-color:antiquewhite;
+            bottom:0px;
+            position:absolute;
+            width:100%;
+        }
+        .divNavBar {
+            text-align: center;
+            background-color:azure;
+        }
+        a{
+            text-decoration: none;
+            padding:10px;
+            color:blue;
+        }
+        p {
+            font-size:30px;
+            color:red;
+            text-align:center;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="divHeader">
+                <h1>Student Portal</h1>
+            </div>
+            <div class="divNavBar">
+                <asp:HyperLink runat="server" Text="Admin" NavigateUrl="~/Admin.master"></asp:HyperLink>
+                <asp:HyperLink runat="server" Text="User" NavigateUrl="~/User.aspx"></asp:HyperLink>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+            <div class="divFooter">
+                <h3>&copy; 2025 Student Portal</h3>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
